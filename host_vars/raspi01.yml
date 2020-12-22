@@ -1,0 +1,10 @@
+---
+
+hostname: raspi01
+timezone: Europe/Moscow
+
+base_packages:
+  - ncdu
+  - vim
+  - htop
+  - docker.io

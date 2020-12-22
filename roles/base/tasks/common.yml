@@ -1,0 +1,26 @@
+---
+
+- name: Set timezone to Europe/Moscow
+  timezone:
+    name: "{{ timezone }}"
+
+- name: Upgrade all packages to the latest version
+  yum:
+    name: "*"
+    state: latest
+
+- name: Install base software
+  package:
+    name: "{{ base_packages }}"
+    state: present
+
+- name: Set a hostname
+  hostname:
+    name: "{{ hostname }}"
+
+- name: Add ubuntu user to sudo
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    line: '%ubuntu ALL=(ALL) NOPASSWD: ALL'
+    validate: /usr/sbin/visudo -cf %s

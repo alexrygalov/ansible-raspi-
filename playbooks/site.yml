@@ -1,0 +1,18 @@
+# TODO install docker from focal repo along with compose
+
+---
+
+- hosts: raspi01
+  user: ubuntu
+  become: yes
+  gather_facts: yes
+
+  vars:
+    pip_install_packages:
+      - docker
+      - docker-compose
+
+  roles:
+    - base
+    - geerlingguy.pip
+    - geerlingguy.docker
